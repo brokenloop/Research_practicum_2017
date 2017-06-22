@@ -217,3 +217,4 @@ $RECYCLE.BIN/
 
 # Ignore Data Directory
 bus_data/
+weather_data/
