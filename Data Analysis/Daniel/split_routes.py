@@ -79,14 +79,15 @@ def filter(filename, target_dir):
         df = df.drop(column, 1)
 
 
+    # Extracting LineID and JourneyPatternID from JourneyPatternID
     df['LineID'] = df['JourneyPatternID'].apply(lambda x: get_line(x))
     df['JourneyPatternID'] = df['JourneyPatternID'].apply(lambda x: get_journey(x))
 
-    # drop duplicate rows
-    df = df.drop_duplicates(["TimeFrame", "VehicleJourneyID", "StopID"])
-
     # drop rows where bus isn't at stop
     df = df[(df.AtStop == 1)]
+
+    # drop duplicate rows
+    df = df.drop_duplicates(["TimeFrame", "VehicleJourneyID", "StopID"])
 
     # filter out routes which only have 1 stop.
     # This solves the problem of busses starting on the wrong side...
