@@ -220,3 +220,6 @@ bus_data/
 weather_data/
 
 *.idea
+*.sav
+*.csv
+*.pkl
